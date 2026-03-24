@@ -1,0 +1,171 @@
+<!-- À placer où vous voulez dans votre page -->
+<div class="instagram-slider-container" style="margin: 40px 0;">
+  <div class="instagram-slider">
+    <!-- Remplacez par vos images -->
+    <div class="slide">
+      <img src="images\❤️.jpeg" alt="Mode femme printemps">
+    </div>
+    <div class="slide">
+      <img src="images\❤️.jpeg" alt="Collection été">
+    </div>
+    <div class="slide">
+      <img src="images\❤️.jpeg" alt="Nouveautés">
+    </div>
+  </div>
+  
+  <div class="instagram-overlay">
+    <h2>Nos chapeaux</h2>
+    <p>Inspirez-vous au quotidien avec nos looks tendance pour femme.</p>
+    <div class="instagram-handle">@mama africa.tn</div>
+  </div>
+</div>
+
+<style>
+  /* Style minimaliste pour intégration facile */
+  .instagram-slider-container {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+  
+  .instagram-slider {
+    display: flex;
+    transition: transform 1.2s ease-in-out;
+    height: 400px; /* Ajustez selon vos besoins */
+  }
+  
+  .instagram-slider .slide {
+    min-width: 100%;
+    position: relative;
+  }
+  
+  .instagram-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .instagram-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    width: 90%;
+    max-width: 500px;
+    z-index: 2;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    padding: 20px;
+    background: rgba(0,0,0,0.4);
+    border-radius: 10px;
+  }
+  
+  .instagram-overlay h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+  }
+  
+  .instagram-overlay p {
+    margin-bottom: 15px;
+    line-height: 1.4;
+  }
+  
+  .instagram-handle {
+    font-weight: bold;
+    font-size: 1.4em;
+    color: #fff;
+    display: inline-block;
+    padding: 5px 15px;
+    background: linear-gradient(45deg, #405DE6, #833AB4, #C13584, #E1306C, #FD1D1D);
+    border-radius: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .instagram-slider {
+      height: 300px;
+    }
+    
+    .instagram-overlay {
+      padding: 15px;
+    }
+    
+    .instagram-overlay h2 {
+      font-size: 1.4em;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.querySelector('.instagram-slider');
+    const slides = document.querySelectorAll('.slide');
+    let currentIndex = 0;
+    const slideCount = slides.length;
+    
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slideCount;
+      updateSlider();
+    }
+    
+    function updateSlider() {
+      slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+    
+    // Démarrer l'animation
+    const interval = setInterval(nextSlide, 500); // 5 secondes
+    
+    // Pause au survol
+    const container = document.querySelector('.instagram-slider-container');
+    container.addEventListener('mouseenter', () => clearInterval(interval));
+    container.addEventListener('mouseleave', () => {
+      interval = setInterval(nextSlide, 5000);
+    });
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+<div class="instagram-banner">
+<!-- À placer où vous voulez dans votre page -->
+<div class="instagram-slider-container" style="margin: 40px 0;">
+  <div class="instagram-slider">
+    <!-- Remplacez par vos images -->
+    <div class="slide">
+      <img src="images\9ad6f096-c53b-4c1a-976c-9c07833d7437.jpeg" alt="Mode femme printemps">
+    </div>
+    <div class="slide">
+      <img src="images\4ce71987-bab7-4659-94ec-d2903704adbd.jpeg" alt="Collection été">
+    </div>
+    <div class="slide">
+      <img src="images\a11cf60d-5149-4c63-b0a7-e8372331b665.jpeg" alt="Nouveautés">
+    </div>
+
+    <div class="slide">
+      <img src="images\7ade91e1-e774-48f1-8c0c-1919fcb5d3d9.jpeg" alt="Nouveautés">
+    </div>
+    <div class="slide">
+      <img src="images\7ade91e1-e774-48f1-8c0c-1919fcb5d3d9.jpeg" alt="Nouveautés">
+    </div>
+
+    
+  
+  
+  <div class="instagram-overlay">
+    <h2>Nos Packs-Nos chapeaux</h2>
+    <p>Inspirez-vous au quotidien avec nos looks tendance pour femme.</p>
+  <a href="voir plus.html" class="nav-item active><div class="instagram-handle"><button>Voir plus</button></div></a>
+    <a href="voir plus.html" class="nav-item active"><div class="instagram-handle"></div>Voir plus</a>
+       
+  </div>
+</div>

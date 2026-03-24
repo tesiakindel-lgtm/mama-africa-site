@@ -1,0 +1,111 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+.instagram-section {
+  padding: 40px 20px;
+  background-color: #f5f5f5;
+}
+
+.insta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.insta-header h2 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.insta-header p {
+  max-width: 600px;
+  font-size: 16px;
+  color: #666;
+}
+
+.insta-btn {
+  padding: 10px 20px;
+  background-color: #000;
+  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.insta-btn:hover {
+  background-color: #333;
+}
+
+/* Slider Instagram */
+.insta-slider {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.insta-track {
+  display: flex;
+  width: calc(250px * 8); /* largeur totale: 8 images * 250px */
+  animation: scrollInsta 40s linear infinite;
+}
+
+.insta-track img {
+  width: 250px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-right: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Animation lente */
+@keyframes scrollInsta {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+</style>
+<body>
+    
+<section class="instagram-section">
+  <div class="insta-header">
+    <div>
+      <h2>Suivez-nous sur Instagram!</h2>
+      <p>Inspirez-vous au quotidien avec nos looks tendance pour femme. Rejoignez notre communauté Instagram et plongez dans l’univers de la mode féminine !</p>
+    </div>
+    <a href="https://instagram.com" target="_blank" class="insta-btn">Mama africa.tn</a>
+    
+  </div>
+  </div>
+
+  <div class="insta-slider">
+    <div class="insta-track">
+      <img src="images\auguste-lavi-po1_Qo5IiDE-unsplash.jpg" alt="Look 1">
+      <img src="images\auguste-lavi-po1_Qo5IiDE-unsplash.jpg" alt="Look 2">
+      <img src="images\auguste-lavi-po1_Qo5IiDE-unsplash.jpg" alt="Look 3">
+      <img src="images\auguste-lavi-po1_Qo5IiDE-unsplash.jpg" alt="Look 4">
+      <!-- On répète pour l'effet infini -->
+      <img src="images\auguste-lavi-po1_Qo5IiDE-unsplash.jpg" alt="Look 1">
+      <img src="images\auguste-lavi-po1_Qo5IiDE-unsplash.jpg" alt="Look 2">
+      <img src="images/insta3.jpg" alt="Look 3">
+      <img src="images/insta4.jpg" alt="Look 4">
+    </div>
+  </div>
+</section>
+</body>
+</html>

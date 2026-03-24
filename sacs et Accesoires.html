@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacs et Accessoires- Boutique</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+            --white: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .page-title {
+            font-size: 28px;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .breadcrumb {
+            font-size: 14px;
+            color: #777;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .product-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .product-info {
+            padding: 15px;
+        }
+        
+        .product-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+        
+        .product-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .price-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .current-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        
+        .old-price {
+            font-size: 14px;
+            text-decoration: line-through;
+            color: #999;
+            margin-left: 10px;
+        }
+        
+        .add-to-cart {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #1a252f;
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+        
+        .sort-label {
+            margin-right: 10px;
+            font-weight: 600;
+        }
+        
+        .sort-select {
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        
+          :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --dark-bg: #1a1a1a;
+            --text-light: #ffffff;
+            --text-gray: #cccccc;
+            --border-color: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        .footer {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            padding: 40px 20px;
+            border-top: 3px solid var(--secondary-color);
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-column {
+            margin-bottom: 20px;
+        }
+        
+        .footer-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--text-light);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+    
+    </style>
+</head>
+
+  <a href="panier.html" class="cart-icon">
+  🛒 Panier (<span id="cartCount">0</span>)
+ </a>
+ </header>
+<body>
+    
+    <div class="container">
+        <!-- Page Header -->
+        <header class="page-header">
+            <h1 class="page-title">Sacs et Accessoires</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Accueil</a> &gt; Sacs et Accessoires
+            </div>
+        </header>
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <span class="sort-label">Trier par:</span>
+            <select class="sort-select">
+                <option>les plus populaires</option>
+                <option>les meilleurs</option>
+                <option>Prix croissant</option>
+                <option>prix decroissant</option>
+            </select>
+        </div>
+        
+        <!-- Products Grid -->
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="images\téléchargement (18).jpeg" alt="pack complet et chapeau" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Sacs et Accessoires</h3>
+                    <p class="product-description">pack complet et chapeau</p>
+                    <div class="price-container">
+                        <span class="current-price">32 TND</span>
+                        <span class="old-price">35 TND</span>
+                    </div>
+                   <button onclick="goToCommande('pack complet et chapeaux', 32, 'images/téléchargement (18).jpeg')">🛒 Commander</button>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="images\téléchargement (33).jpeg" alt="sac a main" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Sacs et Accessoires </h3>
+                    <p class="product-description">sac a main</p>
+                    <div class="price-container">
+                        <span class="current-price">32 TND</span>
+                    </div>
+                   <button onclick="goToCommande('sac amain ', 32, 'images/téléchargement (33).jpeg')">🛒 Commander</button>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="images\téléchargement (31).jpeg" alt="sacpagne-tradi et trousse " class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Sacs et Accessoires</h3>
+                    <p class="product-description">sac-tradi et trousse</p>
+                    <div class="price-container">
+                        <span class="current-price">32 TND</span>
+                    </div>
+                   <button onclick="goToCommande('sac tradi et trousses', 32, 'images/téléchargement (31).jpeg')">🛒 Commander</button>
+                </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="images\téléchargement (19).jpeg" alt="Pack complet " class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Sacs et Accessoires</h3>
+                    <p class="product-description">Pack complet et chapeau</p>
+                    <div class="price-container">
+                        <span class="current-price">72 TND</span>
+                    </div>
+                   <button onclick="goToCommande('pack complet et chapeaux', 72, 'images/téléchargement (19).jpeg')">🛒 Commander</button>
+                </div>
+            </div>
+
+            <!-- Ajoutez ce code juste avant la fermeture de la div .products-grid dans le code précédent -->
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <img src="images\téléchargement (32).jpeg" alt="Sac a main" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Sacs et Accessoires</h3>
+                    <p class="product-description">Sac a main</p>
+                    <div class="price-container">
+                        <span class="current-price">29.9 TND</span>
+                    </div>
+                   <button onclick="goToCommande('sac a main', 29.9, 'images/téléchargement (32).jpeg')">🛒 Commander</button>
+                </div>
+            </div>
+
+
+            <div class="product-card">
+                <img src="images\téléchargement (21).jpeg" alt="pack complet" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Sacs et Accessoires</h3>
+                    <p class="product-description">pack complet </p>
+                    <div class="price-container">
+                        <span class="current-price">29.9 TND</span>
+                    </div>
+                   <button onclick="goToCommande('pack complet', 29.9, 'images/téléchargement (21).jpeg')">🛒 Commander</button>
+                </div>
+            </div>
+            
+
+            <div class="product-card">
+                <img src="images\téléchargement (26).jpeg" alt="Sac a main tradi trousse" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Sacs et Accessoires</h3>
+                    <p class="product-description">Sac a main tradi-trousse</p>
+                    <div class="price-container">
+                        <span class="current-price">29.9 TND</span>
+                    </div>
+                    <button onclick="goToCommande('sac a main tradi-trousse', 29.9, 'images/téléchargement (26).jpeg')">🛒 Commander</button>
+                </div>
+            </div>
+
+
+
+            <div class="product-card">
+                <img src="images\téléchargement (22).jpeg" alt="pack complet rouge" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Sacs et Accessoires</h3>
+                    <p class="product-description">pack complet rouge</p>
+                    <div class="price-container">
+                        <span class="current-price">29.9 TND</span>
+                    </div>
+                    <button onclick="goToCommande('pack complet ', 29.9, 'images/téléchargement (22).jpeg')">🛒 Commander</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+            <footer class="footer">
+        <div class="footer-container">
+            <!-- Colonne 1 -->
+            <div class="footer-column">
+                <h3 class="footer-title">A propos de nous</h3>
+                <ul class="footer-links">
+                    <li><a href="A propos.html" class="active">A propos</a></li>
+                    <li><a href="politique de confidentialité.html" class="active">Politique de confidentialité</a></li>
+                    <li><a href="FAQ.html" class="active">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <!-- Colonne 2 -->
+            <div class="footer-column">
+                <h3 class="footer-title">Nos services</h3>
+                <ul class="footer-links">
+                    <li><a href="guide des tailles.html" class="active">Guide des tailles</a></li>
+                    <li><a href="service clients.html" class="active">Service clients</a></li>
+                </ul>
+            </div>
+            
+            <!-- Colonne 3 -->
+            <div class="footer-column">
+                <h3 class="footer-title">NOS CATÉGORIES</h3>
+                <ul class="footer-links">
+                    <li><a href="Robes.html" class="active">Robes</a></li>
+                    <li><a href="Emsembles.html" class="active">Ensembles</a></li>
+                    <li><a href="Jupes.html" class="active">Jupes</a></li>
+                    <li><a href="chapeaux1s.html" class="active"> chapeaux</a></li>
+                    <li><a href="Pull.html" class="active">pull</a></li> 
+                    <li><a href="Pantalons.html" class="active">Pantalons</a></li>
+                    <li><a href="sacs et Accesoires.html" class="active"> sac et Accessoires</a></li>
+                </ul>
+            </div>
+            
+            <!-- Colonne 4 -->
+            <div class="footer-column">
+                <h3 class="footer-title">Suivez nous</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/kendall kind" target="-blank" class="social-icon">f</a> <!-- Facebook -->
+                    <a href="https://www.instagram.com/keira_la_dounia"  target="-blank" class="social-icon">i</a> <!-- Instagram -->
+                    <a href="https://www.Twitter.com/Tesia Kindel" target="-blank"" class="social-icon">t</a> <!-- Twitter -->
+                    <a href="https://www.LinkedIn.com/tesia KIM" target="-blank"" class="social-icon">in</a> <!-- LinkedIn -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            © 2024 PRO Store. All rights reserved by Mama-Africa.
+        </div>
+    </footer>     
+   <script>
+
+     function goToCommande(nom, prix, image) {
+    const url = new URL('commande.html', window.location.origin);
+    url.searchParams.set('nom', nom);
+    url.searchParams.set('prix', prix);
+    url.searchParams.set('image', image);
+    window.location.href = url.toString();
+  }
+
+
+         function mettreAJourCompteurPanier() {
+    const panier = JSON.parse(localStorage.getItem("panier")) || [];
+    const totalQuantite = panier.reduce((total, item) => total + item.quantite, 0);
+    document.getElementById("cartCount").textContent = totalQuantite;
+  }
+
+  // Met à jour dès le chargement de la page
+  window.addEventListener("load", mettreAJourCompteurPanier);
+
+
+   </script>
+</body>
+</html>

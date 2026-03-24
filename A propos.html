@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>À propos - Mama Africa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Base */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      color: #333;
+      background-image: url('images/motif-wax-vert.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+    }
+
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.92);
+      padding: 50px 0;
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Blocs */
+    .block {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 60px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      border-left: 6px solid #3cb371;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+
+    .block.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .block:nth-child(even) {
+      flex-direction: row-reverse;
+      border-left: none;
+      border-right: 6px solid #2e8b57;
+    }
+
+    .block-image {
+      flex: 1 1 300px;
+    }
+
+    .block-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .block-text {
+      flex: 2 1 400px;
+      padding: 30px;
+    }
+
+    .block-text h2 {
+      margin-top: 0;
+      color: #006400;
+      font-size: 1.8em;
+      margin-bottom: 15px;
+    }
+
+    .block-text p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .block {
+        flex-direction: column !important;
+      }
+
+      .block-text {
+        padding: 20px;
+      }
+    }
+    a.active{
+        font-weight: bold;
+        color:#2e8b57;
+    }
+
+     :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --dark-bg: #1a1a1a;
+            --text-light: #ffffff;
+            --text-gray: #cccccc;
+            --border-color: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        .footer {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            padding: 40px 20px;
+            border-top: 3px solid var(--secondary-color);
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-column {
+            margin-bottom: 20px;
+        }
+        
+        .footer-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--text-light);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+  </style>
+</head>
+<body>
+
+  <div class="overlay">
+    <div class="section-container">
+
+      <!-- Histoire -->
+      <div class="block">
+        <div class="block-image">
+          <img src="images/histoire.jpg" alt="Histoire de Mama Africa">
+        </div>
+        <div class="block-text">
+          <h2>Histoire de Mama Africa</h2>
+          <p>Mama Africa est née d’une passion pour les tissus africains et l'artisanat local. Elle incarne la richesse des traditions textiles à travers des créations modernes et culturelles.</p>
+        </div>
+      </div>
+
+      <!-- Groupe -->
+      <div class="block">
+        <div class="block-image">
+          <img src="images/groupe.jpg" alt="Notre groupe Mama Africa">
+        </div>
+        <div class="block-text">
+          <h2>Notre groupe</h2>
+          <p>Notre équipe est composée de stylistes, couturiers, photographes et créateurs passionnés. Chaque pièce est conçue dans la convivialité, le respect et la fierté de nos origines.</p>
+        </div>
+      </div>
+
+      <!-- Shooting -->
+      <div class="block">
+        <div class="block-image">
+          <img src="images/shooting.jpg" alt="Zone de shooting Mama Africa">
+        </div>
+        <div class="block-text">
+          <h2>Partie Shooting</h2>
+          <p>Nos shootings sont réalisés dans des ambiances naturelles ou décorées avec du pagne, mettant en lumière la beauté de nos modèles et l’authenticité de nos créations.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+       <footer class="footer">
+        <div class="footer-container">
+            <!-- Colonne 1 -->
+            <div class="footer-column">
+                <h3 class="footer-title">A propos de nous</h3>
+                <ul class="footer-links">
+                    <li><a href="A propos.html" class="active">A propos</a></li>
+                    <li><a href="politique de confidentialité.html" class="active">Politique de confidentialité</a></li>
+                    <li><a href="FAQ.html" class="active">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <!-- Colonne 2 -->
+            <div class="footer-column">
+                <h3 class="footer-title">Nos services</h3>
+                <ul class="footer-links">
+                    <li><a href="guide des tailles.html" class="active">Guide des tailles</a></li>
+                    <li><a href="service clients.html" class="active">Service clients</a></li>
+                </ul>
+            </div>
+            
+            <!-- Colonne 3 -->
+            <div class="footer-column">
+                <h3 class="footer-title">NOS CATÉGORIES</h3>
+                <ul class="footer-links">
+                    <li><a href="Robes.html" class="active">Robes</a></li>
+                    <li><a href="Emsembles.html" class="active">Ensembles</a></li>
+                    <li><a href="Jupes.html" class="active">Jupes</a></li>
+                    <li><a href="chapeaux1s.html" class="active"> chapeaux</a></li>
+                    <li><a href="Pull.html" class="active">pull</a></li> 
+                    <li><a href="Pantalons.html" class="active">Pantalons</a></li>
+                    <li><a href="sacs et Accesoires.html" class="active"> sac et Accessoires</a></li>
+                </ul>
+            </div>
+            
+            <!-- Colonne 4 -->
+            <div class="footer-column">
+                <h3 class="footer-title">Suivez nous</h3>
+                <div class="social-links">
+                    <a href="#" class="social-icon">f</a> <!-- Facebook -->
+                    <a href="#" class="social-icon">i</a> <!-- Instagram -->
+                    <a href="#" class="social-icon">t</a> <!-- Twitter -->
+                    <a href="#" class="social-icon">in</a> <!-- LinkedIn -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            © 2024 PRO Store. All rights reserved by Mama-Africa.
+        </div>
+    </footer>     
+
+
+  <!-- Animation JS -->
+  <script>
+    const revealOnScroll = () => {
+      const blocks = document.querySelectorAll('.block');
+      blocks.forEach(block => {
+        const rect = block.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          block.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
+
+</body>
+</html>

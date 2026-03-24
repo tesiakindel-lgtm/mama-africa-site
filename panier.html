@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Panier</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .panier-container { max-width: 800px; margin: auto; }
+    .produit { border-bottom: 1px solid #ccc; padding: 10px 0; display: flex; align-items: center; }
+    .produit img { width: 80px; height: 80px; object-fit: cover; margin-right: 10px; }
+    .totaux { margin-top: 20px; }
+    .totaux div { margin-bottom: 5px; }
+    button { margin-right: 10px; padding: 10px 15px; cursor: pointer; }
+    #formulaire-commande { display: none; margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px; }
+    input, textarea, select { display: block; margin: 10px 0; padding: 5px; width: 100%; }
+  </style>
+</head>
+<body>
+  <div class="panier-container">
+    <h2>Votre panier</h2>
+    <div id="liste-produits">Votre panier est vide</div>
+
+    <div class="totaux">
+      <div>Sous-total : <span id="sousTotal">0 TND</span></div>
+      <div>Remise : <span id="remise">0 TND</span></div>
+      <div>Livraison : <span id="livraison">0 TND</span></div>
+      <div>Total TTC : <span id="total">0 TND</span></div>
+    </div>
+
+    <button onclick="continuerAchats()">Continuer mes achats</button>
+    <button onclick="viderPanier()">Vider le panier</button>
+    <button onclick="afficherFormulaire()">Valider mes achats</button>
+
+    <div id="formulaire-commande">
+      <h3>Valider mes achats</h3>
+      <input type="text" id="nom" placeholder="Nom" required>
+      <input type="text" id="prenom" placeholder="Prénom" required>
+      <input type="tel" id="telephone" placeholder="Téléphone" required>
+      <textarea id="commentaire" placeholder="Note ou commentaire..."></textarea>
+      <select id="paiement" onchange="afficherPaiementCB()">
+        <option value="livraison">Paiement à la livraison</option>
+        <option value="cb">Carte bancaire</option>
+      </select>
+      <div id="paiementCB" style="display:none;">
+        <input type="text" placeholder="Numéro de carte">
+        <input type="text" placeholder="Date d'expiration (MM/AA)">
+        <input type="text" placeholder="CVV">
+      </div>
+      <button onclick="confirmerAchat()">Confirmer</button>
+      <button onclick="annulerFormulaire()">Annuler</button>
+    </div>
+  </div>
+
+  <script>
+    const panier = JSON.parse(localStorage.getItem('panier')) || [];
+
+    function afficherPanier() {
+      const container = document.getElementById('liste-produits');
+      const sousTotalEl = document.getElementById('sousTotal');
+      const livraisonEl = document.getElementById('livraison');
+      const remiseEl = document.getElementById('remise');
+      const totalEl = document.getElementById('total');
+
+      if (panier.length === 0) {
+        container.innerHTML = 'Votre panier est vide';
+        sousTotalEl.textContent = '0 TND';
+        livraisonEl.textContent = '0 TND';
+        remiseEl.textContent = '0 TND';
+        totalEl.textContent = '0 TND';
+        return;
+      }
+
+      container.innerHTML = '';
+      let sousTotal = 0;
+      panier.forEach(produit => {
+        const div = document.createElement('div');
+        div.className = 'produit';
+        div.innerHTML = `
+          <img src="${produit.image}" alt="${produit.nom}" />
+          <div>
+            <strong>${produit.nom}</strong><br>
+            Prix : ${produit.prix} TND<br>
+            Quantité : ${produit.quantite}
+          </div>
+        `;
+        container.appendChild(div);
+        sousTotal += produit.prix * produit.quantite;
+      });
+
+      const livraison = sousTotal >= 100 ? 'gratuit' : '4 TND';
+      const livraisonValeur = sousTotal >= 100 ? 0 : 4;
+      const remise = 0;
+      const total = sousTotal + livraisonValeur - remise;
+
+      sousTotalEl.textContent = sousTotal + ' TND';
+      livraisonEl.textContent = livraison;
+      remiseEl.textContent = remise + ' TND';
+      totalEl.textContent = total + ' TND';
+    }
+
+    function continuerAchats() {
+      window.location.href = 'index.html';
+    }
+
+    function viderPanier() {
+      localStorage.removeItem('panier');
+      window.location.reload();
+    }
+
+    function afficherFormulaire() {
+      document.getElementById('formulaire-commande').style.display = 'block';
+    }
+
+    function annulerFormulaire() {
+      document.getElementById('formulaire-commande').style.display = 'none';
+    }
+
+    function afficherPaiementCB() {
+      const paiement = document.getElementById('paiement').value;
+      document.getElementById('paiementCB').style.display = paiement === 'cb' ? 'block' : 'none';
+    }
+
+    function confirmerAchat() {
+      const nom = document.getElementById('nom').value.trim();
+      const prenom = document.getElementById('prenom').value.trim();
+      const telephone = document.getElementById('telephone').value.trim();
+
+      if (!nom || !prenom || !telephone) {
+        alert("Veuillez remplir tous les champs requis.");
+        return;
+      }
+
+      alert("Votre achat a été confirmé !");
+      localStorage.removeItem('panier');
+      window.location.href = 'index.html';
+    }
+
+    afficherPanier();
+
+    
+  function mettreAJourCompteurPanier() {
+    const panier = JSON.parse(localStorage.getItem("panier")) || [];
+    const totalQuantite = panier.reduce((total, item) => total + item.quantite, 0);
+    document.getElementById("cartCount").textContent = totalQuantite;
+  }
+
+  // Met à jour dès le chargement de la page
+  window.addEventListener("load", mettreAJourCompteurPanier);
+
+  </script>
+</body>
+</html>

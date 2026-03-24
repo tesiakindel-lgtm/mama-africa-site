@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Produits - Mama Africa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #fefefe;
+    }
+
+    .products-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px 10px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      width: 22%;
+      min-width: 220px;
+      max-width: 250px;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .product-card:hover {
+      transform: scale(1.03);
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .product-name {
+      font-size: 16px;
+      margin: 10px 0 5px;
+    }
+
+    .product-price {
+      font-size: 15px;
+      color: #d35400;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 8px 15px;
+      background-color: #d35400;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #b84300;
+    }
+
+    @media screen and (max-width: 1000px) {
+      .product-card {
+        width: 45%;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .product-card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<section class="products-section">
+  <!-- Produit 1 -->
+  <div class="product-card">
+    <div class="product-image">
+      <img src="images/6f86bce1-b712-4f5b-aeba-50efb6e7f1a9.jpeg" alt="Robe décolletée" />
+    </div>
+    <h3 class="product-name">Robe décolletée</h3>
+    <p class="product-price">50 TND</p>
+    <button onclick="goToCommande('Robe décolletée', 50, 'images/6f86bce1-b712-4f5b-aeba-50efb6e7f1a9.jpeg')">🛒 Commander</button>
+  </div>
+
+  <!-- Produit 2 -->
+  <div class="product-card">
+    <div class="product-image">
+      <img src="images/c0640c78-8642-4757-92d6-a7dab8650116.jpeg" alt="Robe descente fleuri" />
+    </div>
+    <h3 class="product-name">Robe descente fleuri</h3>
+    <p class="product-price">45 TND</p>
+    <button onclick="goToCommande('Robe descente fleuri', 45, 'images/c0640c78-8642-4757-92d6-a7dab8650116.jpeg')">🛒 Commander</button>
+  </div>
+
+  <!-- Produit 3 -->
+  <div class="product-card">
+    <div class="product-image">
+      <img src="images/d70f1368-d5c8-46cb-b30a-e1ed97c1904e.jpeg" alt="Robe bissé fleuri" />
+    </div>
+    <h3 class="product-name">Robe bissé fleuri</h3>
+    <p class="product-price">50 TND</p>
+    <button onclick="goToCommande('Robe bissé fleuri', 50, 'images/d70f1368-d5c8-46cb-b30a-e1ed97c1904e.jpeg')">🛒 Commander</button>
+  </div>
+
+  <!-- Produit 4 -->
+  <div class="product-card">
+    <div class="product-image">
+      <img src="images/Ankara pant.jpeg" alt="Ensemble pantalopardessus" />
+    </div>
+    <h3 class="product-name">Ensemble pantalopardessus</h3>
+    <p class="product-price">29.9 TND</p>
+    <button onclick="goToCommande('Ensemble pantalopardessus', 29.9, 'images/Ankara pant.jpeg')">🛒 Commander</button>
+  </div>
+
+  <!-- Produit 5 -->
+  <div class="product-card">
+    <div class="product-image">
+      <img src="images/6632d78a-f61c-4707-a465-ed0a42acabf7.jpeg" alt="Ensemble veste" />
+    </div>
+    <h3 class="product-name">Ensemble veste</h3>
+    <p class="product-price">49.9 TND</p>
+    <button onclick="goToCommande('Ensemble veste', 49.9, 'images/6632d78a-f61c-4707-a465-ed0a42acabf7.jpeg')">🛒 Commander</button>
+  </div>
+
+  <!-- Produit 6 -->
+  <div class="product-card">
+    <div class="product-image">
+      <img src="images/2971d9cb-874a-43b3-9ec3-8070c02511f7.jpeg" alt="Pantalon Taille Haute" />
+    </div>
+    <h3 class="product-name">Pantalon Taille Haute</h3>
+    <p class="product-price">25 TND</p>
+    <button onclick="goToCommande('Pantalon Taille Haute', 25, 'images/2971d9cb-874a-43b3-9ec3-8070c02511f7.jpeg')">🛒 Commander</button>
+  </div>
+
+  <!-- Produit 7 -->
+  <div class="product-card">
+    <div class="product-image">
+      <img src="images/delight-dzansi-FiggxDNdkUs-unsplash.jpg" alt="Robe verte élastique" />
+    </div>
+    <h3 class="product-name">Robe verte élastique</h3>
+    <p class="product-price">35 TND</p>
+    <button onclick="goToCommande('Robe verte élastique', 35, 'images/delight-dzansi-FiggxDNdkUs-unsplash.jpg')">🛒 Commander</button>
+  </div>
+
+  <!-- Produit 8 -->
+  <div class="product-card">
+    <div class="product-image">
+      <img src="images/hush-naidoo-jade-photography-1vBexPeDD3o-unsplash.jpg" alt="Robe singlé mitchotcha" />
+    </div>
+    <h3 class="product-name">Robe singlé mitchotcha</h3>
+    <p class="product-price">35 TND</p>
+    <button onclick="goToCommande('Robe singlé mitchotcha', 35, 'images/hush-naidoo-jade-photography-1vBexPeDD3o-unsplash.jpg')">🛒 Commander</button>
+  </div>
+</section>
+
+<script>
+  function goToCommande(nom, prix, image) {
+    // Redirection vers la page commande avec les paramètres
+    window.location.href = commande.html?nom=${encodeURIComponent(nom)}&prix=${prix}&image=${encodeURIComponent(image)};
+  }
+</script>
+
+</body>
+</html>

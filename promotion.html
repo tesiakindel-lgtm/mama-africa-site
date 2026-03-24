@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promotions</title>
+    <style>
+/* Styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+}
+
+/* Navigation */
+.main-nav {
+    display: flex;
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.nav-item {
+    padding: 10px 15px;
+    margin-right: 5px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.nav-item:hover, .nav-item.active {
+    background-color: #e74c3c;
+    color: white;
+}
+
+/* Contenu promotion */
+.promo-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+.breadcrumb {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.breadcrumb a {
+    color: #e74c3c;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Filtres */
+.filter-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    margin-bottom: 15px;
+}
+
+.filter-select {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    background-color: white;
+}
+
+/* Grille produits */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    padding: 15px;
+    font-size: 16px;
+    color: #333;
+}
+
+.price {
+    padding: 0 15px 15px;
+    font-weight: bold;
+    color: #e74c3c;
+    font-size: 18px;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 14px;
+    padding-left: 15px;
+}
+
+.product-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #e74c3c;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .main-nav {
+        padding: 10px 5px;
+    }
+    
+    .nav-item {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.buy-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .buy-button:hover {
+            background-color: #45a049;
+        }
+
+          :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --dark-bg: #1a1a1a;
+            --text-light: #ffffff;
+            --text-gray: #cccccc;
+            --border-color: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        .footer {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            padding: 40px 20px;
+            border-top: 3px solid var(--secondary-color);
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-column {
+            margin-bottom: 20px;
+        }
+        
+        .footer-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--text-light);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+    
+    </style>
+</head>
+ <header>
+    <a href="panier.html" class="cart-icon">
+  🛒 Panier (<span id="cartCount">0</span>)
+ </a>
+ </header>
+<body>
+    <nav class="main-nav">
+        <a href="index.html" class="nav-item">Accueil</a>
+        <a href="promotion.html" class="nav-item active">Promotion</a>
+        <!-- Autres liens de navigation -->
+    </nav>
+
+    <div class="promo-container">
+        <div class="breadcrumb">
+            <a href="index.html">Accueil</a> > <span>Promotion</span>
+        </div>
+
+        <h1>PROMOTION</h1>
+
+        <div class="filter-section">
+            <div class="filter-group">
+                <h3>Trier par :</h3>
+                <select class="filter-select">
+                    <option>Tous</option>
+                    <option>chapeaux</option>
+                    <option>Robes</option>
+                    <option>Pantalons</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="products-grid">
+            <!-- Produit 1 -->
+            <div class="product-card promo">
+                <div class="product-badge">Pack et chapeaux</div>
+                <img src="images\7ade91e1-e774-48f1-8c0c-1919fcb5d3d9.jpeg" alt="chapeaux rondelle">
+                <h3>chapeaux rondelle </h3>
+                <p class="price">72 TND</p>
+                <button onclick="goToCommande('chapeaux rondelle', 72, 'images/7ade91e1-e774-48f1-8c0c-1919fcb5d3d9.jpeg')">🛒 Commander</button>
+            </div>
+            
+            <!-- Produit 2 -->
+            <div class="product-card promo">
+                <div class="product-badge">-30%</div>
+                <img src="images\téléchargement (16).jpeg" alt=pack ">
+                <h3>Pack & chapaux </h3>
+                <p class="old-price">35 TND</p>
+                <p class="price">25.9 TND</p>
+                <button onclick="goToCommande('pack', 25.9, 'images/téléchargement (16).jpeg')">🛒 Commander</button>
+                
+            </div>
+            
+            <!-- Produit 3 -->
+            <div class="product-card promo">
+                <div class="product-badge">Nouveau</div>
+                <img src="images\822db826-b243-4341-a75c-b552291e8b8b.jpeg" alt="emsemble pantalon-demie ">
+               <h3> emsemble pantalon-demie</h3>
+                <p class="old-price">35 TND</p>
+                <p class="price">29.9 TND</p>
+                <button onclick="goToCommande('Ensemble pantalon-demie', 29.9, 'images/822db826-b243-4341-a75c-b552291e8b8b.jpeg')">🛒 Commander</button>
+                
+            </div>
+            
+            <!-- Produit 4 -->
+            <div class="product-card promo">
+                <div class="product-badge">Promo</div>
+                <img src="images\Ankara pant.jpeg" alt="Pantalon taille haute">
+                 <h3> Pantalon taille haute</h3>
+                <p class="old-price">35 TND</p>
+                <p class="price">25 TND</p>
+                 <button onclick="goToCommande('Ensemble pantalon taille Haute', 25, 'images/Ankara pant.jpeg')">🛒 Commander</button>
+                
+            </div>
+
+
+             <!-- Produit 5 -->
+            <div class="product-card promo">
+                <div class="product-badge">Promo</div>
+                <img src="images\2bd82000-ba4e-4962-a79e-78451884a254.jpeg" alt="robe influence sur homme">
+                  <h3> robe influence sur homme</h3>
+                <p class="old-price">35 TND</p>
+                <p class="price">25 TND</p>
+                <button onclick="goToCommande('Robe influence sur homme', 25, 'images/2bd82000-ba4e-4962-a79e-78451884a254.jpeg')">🛒 Commander</button>
+                
+            </div>
+
+
+             <!-- Produit 6-->
+            <div class="product-card promo">
+                <div class="product-badge">Promo</div>
+                <img src="images\e69eb616-bae5-4719-a927-7a15b4690914.jpeg" alt="robe decloté poches">
+                  <h3> robe declotée poches</h3>
+                <p class="old-price">35 TND</p>
+                <p class="price">25 TND</p>
+                 <button onclick="goToCommande('Robe decoltée poches', 25, 'images/e69eb616-bae5-4719-a927-7a15b4690914.jpeg')">🛒 Commander</button>
+                
+            </div>
+
+
+             <!-- Produit 7 -->
+            <div class="product-card promo">
+                <div class="product-badge">Promo</div>
+                <img src="images\Hi Beautiful Ladies Thank You For Stopping By To….jpeg" alt="robe epouff">
+                  <h3> rose epouff</h3>
+                <p class="old-price">35 TND</p>
+                <p class="price">25 TND</p>
+                <button onclick="goToCommande('Robe epouff', 25, 'images/Hi Beautiful Ladies Thank You For Stopping By To….jpeg')">🛒 Commander</button>
+                
+            </div>
+
+
+             <!-- Produit 8 -->
+            <div class="product-card promo">
+                <div class="product-badge">Promo</div>
+                <img src="images\Robe tendance en pagne.jpeg" alt=" robe singlé tendance">
+                 <h3> robe singlé tendance</h3>
+                <p class="old-price">35 TND</p>
+                <p class="price">25 TND</p>
+                 <button onclick="goToCommande('Robe singlé tendance', 25, 'images/Robe tendance en pagne.jpeg')">🛒 Commander</button>
+                
+            </div>
+
+
+             <!-- Produit 9-->
+            <div class="product-card promo">
+                <div class="product-badge">Promo</div>
+                <img src="images\498544d8-9903-451d-a8af-0cc724dda6b0.jpeg" alt="Pull simple fermeture">
+                  <h3> Pull simple fermeture</h3>
+                <p class="old-price">35 TND</p>
+                <p class="price">25 TND</p>
+                 <button onclick="goToCommande('Pull simple fermeture', 25, 'images/498544d8-9903-451d-a8af-0cc724dda6b0.jpeg')">🛒 Commander</button>
+                
+            </div>
+
+             <!-- Produit 10 -->
+            <div class="product-card promo">
+                <div class="product-badge">Promo</div>
+                <img src="images\9618461f-855f-4dd7-b0e4-bb311f11b369.jpeg" alt="Pull fermeture">
+                  <h3> Pull fermeture</h3>
+                <p class="old-price">35 TND</p>
+                <p class="price">25 TND</p>
+                <button onclick="goToCommande('Pull  fermeture', 25, 'images/9618461f-855f-4dd7-b0e4-bb311f11b369.jpeg')">🛒 Commander</button>
+                
+            </div>
+
+
+             <!-- Produit 11-->
+            <div class="product-card promo">
+                <div class="product-badge">Promo</div>
+                <img src="images\5b4f97a0-7573-497e-bbc3-8f43a91264e7.jpeg" alt="robe a 10facons">
+                 <h3> robe a 10facons</h3>
+                <p class="old-price">35 TND</p>
+                <p class="price">25 TND</p>
+                <button onclick="goToCommande('robe a 10facons', 25, 'images/5b4f97a0-7573-497e-bbc3-8f43a91264e7.jpeg')">🛒 Commander</button>
+                
+            </div>
+
+
+             <!-- Produit 12-->
+            <div class="product-card promo">
+                <div class="product-badge">Promo</div>
+                <img src="images\afc13df2-3887-42f7-a700-3e5e7abc0b01.jpeg" alt="emsembles large -veste">
+                <h3> Emsembles large-veste</h3>
+                <p class="old-price">35 TND</p>
+                <p class="price">25 TND</p>
+               <button onclick="goToCommande('ensemble large-veste', 25, 'images/afc13df2-3887-42f7-a700-3e5e7abc0b01.jpeg')">🛒 Commander</button>
+                
+            </div>
+
+
+             <!-- Produit 13-->
+            <div class="product-card promo">
+                <div class="product-badge">Promo</div>
+                <img src="images\C hi sweet.jpeg" alt="Pull sweet">
+                <h3> pull sweet</h3>
+                <p class="old-price">35 TND</p>
+                <p class="price">25 TND</p>
+                 <button onclick="goToCommande('pull sweet', 25, 'images/C hi sweet.jpeg')">🛒 Commander</button>
+                
+            </div>
+
+
+             <!-- Produit 14 -->
+            <div class="product-card promo">
+                <div class="product-badge">Promo</div>
+                <img src="images\available in different fabrics and colors also….jpeg" alt="pantalon toure elastique">
+                <h3> Pantalon tour elastique</h3>
+                <p class="old-price">35 TND</p>
+                <p class="price">25 TND</p>
+                 <button onclick="goToCommande('pantalon toure elastque', 25, 'images/available in different fabrics and colors also….jpeg')">🛒 Commander</button>
+                
+            </div>
+
+
+             <!-- Produit 15-->
+            <div class="product-card promo">
+                <div class="product-badge">Promo</div>
+                <img src="images\d70f1368-d5c8-46cb-b30a-e1ed97c1904e.jpeg" alt="robe bisséfleurie">
+                <h3> robe bisséfleurie</h3>
+                <p class="old-price">35 TND</p>
+                <p class="price">25 TND</p>
+               <button onclick="goToCommande('robe bisséfleurie', 25, 'images/d70f1368-d5c8-46cb-b30a-e1ed97c1904e.jpeg')">🛒 Commander</button>
+                
+            </div>
+
+
+             <!-- Produit 16 -->
+
+            <div class="product-card promo">
+                <div class="product-badge">Promo</div>
+                <img src="images\auguste-lavi-po1_Qo5IiDE-unsplash.jpg " alt=" chapeaux elastiqué">
+                 <h3> chapeaux elastiqué</h3>
+                <p class="old-price">35 TND</p>
+                <p class="price">25 TND</p>
+                 <button onclick="goToCommande('chapeau elastique', 25, 'images/auguste-lavi-po1_Qo5IiDE-unsplash.jpg')">🛒 Commander</button>
+                
+            </div>
+        </div>
+    </div>
+
+
+    
+            <footer class="footer">
+        <div class="footer-container">
+            <!-- Colonne 1 -->
+            <div class="footer-column">
+                <h3 class="footer-title">A propos de nous</h3>
+                <ul class="footer-links">
+                    <li><a href="A propos.html" class="active">A propos</a></li>
+                    <li><a href="politique de confidentialité.html" class="active">Politique de confidentialité</a></li>
+                    <li><a href="FAQ.html" class="active">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <!-- Colonne 2 -->
+            <div class="footer-column">
+                <h3 class="footer-title">Nos services</h3>
+                <ul class="footer-links">
+                    <li><a href="guide des tailles.html" class="active">Guide des tailles</a></li>
+                    <li><a href="service clients.html" class="active">Service clients</a></li>
+                </ul>
+            </div>
+            
+            <!-- Colonne 3 -->
+            <div class="footer-column">
+                <h3 class="footer-title">NOS CATÉGORIES</h3>
+                <ul class="footer-links">
+                    <li><a href="Robes.html" class="active">Robes</a></li>
+                    <li><a href="Emsembles.html" class="active">Ensembles</a></li>
+                    <li><a href="Jupes.html" class="active">Jupes</a></li>
+                    <li><a href="chapeaux1s.html" class="active"> chapeaux</a></li>
+                    <li><a href="Pull.html" class="active">pull</a></li> 
+                    <li><a href="Pantalons.html" class="active">Pantalons</a></li>
+                    <li><a href="sacs et Accesoires.html" class="active"> sac et Accessoires</a></li>
+                </ul>
+            </div>
+            
+            <!-- Colonne 4 -->
+            <div class="footer-column">
+                <h3 class="footer-title">Suivez nous</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/kendall kind" target="-blank" class="social-icon">f</a> <!-- Facebook -->
+                    <a href="https://www.instagram.com/keira_la_dounia"  target="-blank" class="social-icon">i</a> <!-- Instagram -->
+                    <a href="https://www.Twitter.com/Tesia Kindel" target="-blank"" class="social-icon">t</a> <!-- Twitter -->
+                    <a href="https://www.LinkedIn.com/tesia KIM" target="-blank"" class="social-icon">in</a> <!-- LinkedIn -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            © 2024 PRO Store. All rights reserved by Mama-Africa.
+        </div>
+    </footer>     
+    <script>
+
+        
+  function goToCommande(nom, prix, image) {
+    const url = new URL('commande.html', window.location.origin);
+    url.searchParams.set('nom', nom);
+    url.searchParams.set('prix', prix);
+    url.searchParams.set('image', image);
+    window.location.href = url.toString();
+  }
+
+
+         function mettreAJourCompteurPanier() {
+    const panier = JSON.parse(localStorage.getItem("panier")) || [];
+    const totalQuantite = panier.reduce((total, item) => total + item.quantite, 0);
+    document.getElementById("cartCount").textContent = totalQuantite;
+  }
+
+  // Met à jour dès le chargement de la page
+  window.addEventListener("load", mettreAJourCompteurPanier);
+
+
+
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+    // Animation des produits
+    const products = document.querySelectorAll('.product-card');
+    
+    products.forEach((product, index) => {
+        product.style.opacity = '0';
+        product.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            product.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+            product.style.opacity = '1';
+            product.style.transform = 'translateY(0)';
+        }, 100);
+    });
+
+    // Filtrage des produits
+    const filterSelect = document.querySelector('.filter-select');
+    filterSelect.addEventListener('change', function() {
+        const filterValue = this.value.toLowerCase();
+        console.log('Filtrer par :', filterValue);
+        // Ici vous ajouteriez la logique de filtrage réelle
+    });
+ });
+    </script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pied de page - Boutique</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --dark-bg: #1a1a1a;
+            --text-light: #ffffff;
+            --text-gray: #cccccc;
+            --border-color: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        .footer {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            padding: 40px 20px;
+            border-top: 3px solid var(--secondary-color);
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-column {
+            margin-bottom: 20px;
+        }
+        
+        .footer-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--text-light);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Colonne 1 -->
+            <div class="footer-column">
+                <h3 class="footer-title">A propos de nous</h3>
+                <ul class="footer-links">
+                    <li><a href="#">A propos</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <!-- Colonne 2 -->
+            <div class="footer-column">
+                <h3 class="footer-title">Nos services</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Guide des tailles</a></li>
+                    <li><a href="#">Service clients</a></li>
+                </ul>
+            </div>
+            
+            <!-- Colonne 3 -->
+            <div class="footer-column">
+                <h3 class="footer-title">NOS CATÉGORIES</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Robes</a></li>
+                    <li><a href="#">Ensemble & Combinaison</a></li>
+                    <li><a href="#">Jelbeb & Jeba</a></li>
+                    <li><a href="#">Jeggings</a></li>
+                    <li><a href="#">Chemises</a></li>
+                    <li><a href="#">Veste & Manteaux</a></li>
+                    <li><a href="#">Pantalons & Jupes</a></li>
+                    <li><a href="#">Accessoires</a></li>
+                </ul>
+            </div>
+            
+            <!-- Colonne 4 -->
+            <div class="footer-column">
+                <h3 class="footer-title">Suivez nous</h3>
+                <div class="social-links">
+                    <a href="#" class="social-icon">f</a> <!-- Facebook -->
+                    <a href="#" class="social-icon">i</a> <!-- Instagram -->
+                    <a href="#" class="social-icon">t</a> <!-- Twitter -->
+                    <a href="#" class="social-icon">in</a> <!-- LinkedIn -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            © 2024 PRO Store. All rights reserved by Sharebeam.
+        </div>
+    </footer>
+</body>
+</html>

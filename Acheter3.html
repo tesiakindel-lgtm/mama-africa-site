@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robe Taysir - Boutique</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+            --white: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        /* Navigation */
+        .breadcrumb {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+        
+        .breadcrumb .separator {
+            color: #999;
+        }
+        
+        /* Product Detail */
+        .product-detail {
+            display: flex;
+            gap: 40px;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            flex: 1;
+            max-width: 500px;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        
+        .product-info {
+            flex: 1;
+        }
+        
+        .product-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .product-rating {
+            color: #f39c12;
+            font-size: 20px;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        
+        .product-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+        }
+        
+        .product-attribute {
+            margin-bottom: 20px;
+        }
+        
+        .attribute-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .size-options {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .size-option {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .size-option.selected {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .delivery-price {
+            margin: 25px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            text-align: right;
+            direction: rtl;
+            font-weight: 600;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .required-field::after {
+            content: " *";
+            color: var(--secondary-color);
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .buy-btn, .add-to-cart-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+        
+        .buy-btn {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .buy-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .add-to-cart-btn {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .add-to-cart-btn:hover {
+            background-color: #1a252f;
+        }
+        
+        .product-meta {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            color: #777;
+            font-size: 14px;
+        }
+        
+        .share-btn {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+
+
+         :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+            --white: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--white);
+            color: var(--dark-gray);
+            padding: 20px;
+        }
+        
+        .similar-products {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+        
+        .product-card {
+            background: var(--white);
+            border: 1px solid #eee;
+            border-radius: 4px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .product-category {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        
+        .product-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .old-price {
+            font-size: 14px;
+            text-decoration: line-through;
+            color: #999;
+            margin-right: 5px;
+        }
+        
+        .product-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .wishlist-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background: none;
+            transition: all 0.3s;
+        }
+        
+        .wishlist-btn:hover {
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+        
+        .buy-btn {
+            padding: 8px 15px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            flex-grow: 1;
+        }
+        
+        .buy-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <div class="breadcrumb">
+            <a href="index.html">Accueil</a>
+            <span class="separator">></span>
+            <span>Robes</span>
+        </div>
+        
+        <!-- Product Detail -->
+        <div class="product-detail">
+            <div class="product-image">
+                <img src="images\téléchargement (47).jpeg"  alt="Robe ">
+            </div>
+            
+            <div class="product-info">
+                <h1 class="product-title">Robe singlé large </h1>
+                <div class="product-rating">*****</div>
+                <div class="product-price">35 DT</div>
+                
+                <div class="product-attribute">
+                    <span class="attribute-title">couleur :</span>
+                    <span>Bleu d'eau</span>
+                </div>
+                
+                <div class="product-attribute">
+                    <span class="attribute-title">Taille :</span>
+                    <div class="size-options">
+                        <div class="size-option">XL</div>
+                        <div class="size-option">2XL</div>
+                        <div class="size-option selected">3XL</div>
+                    </div>
+                </div>
+                
+                <div class="delivery-price">
+                    سعر التوصيل 7.0 دد
+                </div>
+                
+                <div class="form-group">
+                    <label for="name" class="required-field">Nom et prénom</label>
+                    <input type="text" id="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" class="required-field">Téléphone</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="buy-btn">اشترى الين</button>
+                    <button class="add-to-cart-btn">Ajouter au panier</button>
+                </div>
+                
+                <div class="product-meta">
+                    <span>Categorie: Robes</span>
+                    <button class="share-btn">Partage: ↑</button>
+                </div>
+        
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="similar-products">
+        <h2 class="section-title">Produits dans la même catégorie</h2>
+    
+           
+            <!-- Produit 3 -->
+            <div class="product-card">
+                <img src="images\téléchargement (49).jpeg"  alt="Robe" 
+                   style="width:100%; height:150px; object-fit:cover; margin-bottom:10px;">
+                <div class="product-category">Robes</div>
+                <div class="product-price">35 TND</div>
+                <div class="product-actions">
+                    <button class="wishlist-btn">♥</button>
+                    <button class="buy-btn">Acheter</button>
+                </div>
+            </div>
+            
+            <!-- Produit 4 -->
+            <div class="product-card">
+                <img src="images\téléchargement (55).jpeg"  alt="Robe" 
+                   style="width:100%; height:150px; object-fit:cover; margin-bottom:10px;">
+                <div class="product-category">Robes</div>
+                <div class="product-price">35 TND</div>
+                <div class="product-actions">
+                    <button class="wishlist-btn">♥</button>
+                    <button class="buy-btn">Acheter</button>
+                </div>
+            </div>
+
+             <!-- Produit 6-->
+            <div class="product-card">
+                <img src="images\téléchargement (48).jpeg" alt="robe singlé large" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Robes</div>
+                    <div class="product-name">robe singlé large</div>
+                    <div class="product-price">35 TND</div>
+                     <button class="wishlist-btn">♥</button>
+                    <a href="Acheter.html" class="nav-item active"><button class="add-to-cart">Acheter</button></a>
+                
+                </div>
+            </div>
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sélection des tailles
+            document.querySelectorAll('.size-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('.size-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                });
+            });
+            
+            // Gestion du bouton d'achat
+            document.querySelector('.buy-btn').addEventListener('click', function() {
+                const name = document.getElementById('name').value;
+                const phone = document.getElementById('phone').value;
+                const size = document.querySelector('.size-option.selected').textContent;
+                
+                if (!name || !phone) {
+                    alert('Veuillez remplir tous les champs obligatoires');
+                    return;
+                }
+                
+                // Ici vous pourriez ajouter la logique de commande
+                console.log(`Commande de la robe Taysir (${size}) pour ${name}, tel: ${phone}`);
+                // window.location.href = "paiement.html";
+            });
+            
+            // Gestion du panier
+            document.querySelector('.add-to-cart-btn').addEventListener('click', function() {
+                const size = document.querySelector('.size-option.selected').textContent;
+                
+                // Ici vous pourriez ajouter la logique d'ajout au panier
+                console.log(`Ajout au panier: Robe Taysir (${size})`);
+                
+                // Feedback visuel
+                this.textContent = 'Ajouté !';
+                setTimeout(() => {
+                    this.textContent = 'Ajouter au panier';
+                }, 2000);
+            });
+        });
+
+
+        // Gestion des boutons "Acheter" et favoris
+        document.querySelectorAll('.buy-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const productCard = this.closest('.product-card');
+                const productPrice = productCard.querySelector('.product-price').textContent;
+                alert(`Produit ajouté au panier (${productPrice})`);
+            });
+        });
+        
+        document.querySelectorAll('.wishlist-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                this.textContent = this.textContent === '♥' ? '♡' : '♥';
+                this.style.color = this.textContent === '♥' ? var(--secondary-color) : '';
+            });
+        });
+    </script>
+
+</body>
+</html>

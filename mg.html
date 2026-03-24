@@ -1,0 +1,116 @@
+<div class="promo-banner">
+  <!-- Section 1 : Livraison gratuite -->
+  <div class="promo-card" style="--icon: '🚚';">
+    <div class="icon"></div>
+    <h3>LIVRAISON GRATUITE</h3>
+    <p>Showroom vous offre la livraison sur toute la Tunisie, lors de la validation de votre commande, pour tout achat de 200 dt et plus.</p>
+  </div>
+
+  <!-- Section 2 : Satisfait ou remboursé -->
+  <div class="promo-card" style="--icon: '🔄';">
+    <div class="icon"></div>
+    <h3>SATISFAIT OU REMBOURSÉ</h3>
+    <p>Si vous n’êtes pas satisfait de l’article que vous avez commandé, vous pouvez l’échanger dans les 15 jours suivant la date de livraison.</p>
+  </div>
+
+  <!-- Section 3 : Service client -->
+  <div class="promo-card" style="--icon: '📞';">
+    <div class="icon"></div>
+    <h3>SERVICE CLIENT</h3>
+    <p>Contactez-nous via <span class="social">Facebook</span>, <span class="social">Instagram</span>, <span class="social">TikTok</span> ou par téléphone :<br> 
+      <span class="phone">50346557</span> - <span class="phone">57098802</span> - <span class="phone">57098804</span></p>
+  </div>
+</div>
+
+<style>
+  /* Style général */
+  .promo-banner {
+    display: flex;
+    gap: 20px;
+    padding: 30px;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  /* Cartes individuelles */
+  .promo-card {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    border-right: 1px dashed #e0e0e0;
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  .promo-card:last-child {
+    border-right: none;
+  }
+
+  /* Icônes stylisées */
+  .icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+    display: inline-block;
+    animation: bounce 2s infinite;
+  }
+
+  .icon::before {
+    content: var(--icon);
+  }
+
+  /* Typographie */
+  h3 {
+    color: #d32f2f; /* Rouge bordeaux */
+    font-size: 18px;
+    margin-bottom: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  p {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .social {
+    color: #d32f2f;
+    font-weight: 600;
+  }
+
+  .phone {
+    font-weight: 600;
+    color: #333;
+  }
+
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .promo-banner {
+      flex-direction: column;
+      gap: 30px;
+    }
+    .promo-card {
+      border-right: none;
+      border-bottom: 1px dashed #e0e0e0;
+      padding-bottom: 30px;
+    }
+    .promo-card:last-child {
+      border-bottom: none;
+    }
+  }
+</style>

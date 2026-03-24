@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ensembles - Boutique</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+            --white: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        /* Header */
+        .page-header {
+            margin-bottom: 40px;
+        }
+        
+        .page-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        
+        .breadcrumb {
+            font-size: 14px;
+            color: #777;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+        
+        .breadcrumb .separator {
+            color: #999;
+        }
+        
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-category {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        
+        .product-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark-gray);
+        }
+        
+        .product-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .add-to-cart {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-transform: uppercase;
+        }
+        
+        .add-to-cart:hover {
+            background-color: var(--secondary-color);
+        }
+    </style>
+</head>
+ <header>
+     <a href="panier.html" class="cart-icon">
+  🛒 Panier (<span id="cartCount">0</span>)
+ </a>
+ </header>
+<body>
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Robes</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Accueil</a>
+                <span class="separator">></span>
+                <span>Robes</span>
+            </div>
+        </div>
+        
+        <!-- Products Grid -->
+        <div class="products-grid">
+            <!-- Produit 1 -->
+            <div class="product-card">
+                <img src="images\téléchargement (61).jpeg" alt="robe manches longues large" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Robes</div>
+                    <div class="product-name">Robe manches longue large</div>
+                    <div class="product-price">32 TND</div>
+                    <button onclick="goToCommande('robe manches longues large', 32, 'images/téléchargement (61).jpeg')">🛒 Commander</button>
+                
+                    
+                </div>
+            </div>
+            
+            <!-- Produit 2 -->
+            <div class="product-card">
+                <img src="images\téléchargement (62).jpeg" alt="" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Robes</div>
+                    <div class="product-name">Robe manches longues large</div>
+                    <div class="product-price">32 TND</div>
+                     <button onclick="goToCommande('robe manches longues large', 32, 'images/téléchargement (62).jpeg')">🛒 Commander</button>
+                
+                </div>
+            </div>
+            
+            <!-- Produit 3 -->
+            <div class="product-card">
+                <img src="images\téléchargement (47).jpeg" alt="robe singlé large" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Robes</div>
+                    <div class="product-name"> Robe singlé-large</div>
+                    <div class="product-price">35 TND</div>
+                     <button onclick="goToCommande('robe singlé longues large', 35, 'images/téléchargement (47).jpeg')">🛒 Commander</button>
+                
+                </div>
+            </div>
+            
+            <!-- Produit 4 -->
+            <div class="product-card">
+                <img src="images\téléchargement (49).jpeg" alt="robe singlé large" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Robes</div>
+                    <div class="product-name">Robe singlé large</div>
+                    <div class="product-price">35 TND</div>
+                     <button onclick="goToCommande('robe singlé large', 35, 'images/téléchargement (49).jpeg')">🛒 Commander</button>
+                
+                </div>
+            </div>
+            
+            <!-- Produit 5 -->
+            <div class="product-card">
+                <img src="images\téléchargement (55).jpeg" alt="robe moupassoula" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Robes</div>
+                    <div class="product-name">Robe moupassoula</div>
+                    <div class="product-price">35 TND</div>
+                     <button onclick="goToCommande('robe moupassoula', 35, 'images/téléchargement (55).jpeg')">🛒 Commander</button>
+                
+                </div>
+            </div>
+
+
+            <!-- Produit 6-->
+            <div class="product-card">
+                <img src="images\téléchargement (48).jpeg" alt="robe singlé large" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Robes</div>
+                    <div class="product-name">robe singlé large</div>
+                    <div class="product-price">35 TND</div>
+                     <button onclick="goToCommande('robe singlé large', 35, 'images/téléchargement (48).jpeg')">🛒 Commander</button>
+                
+                </div>
+            </div>
+
+
+            <!-- Produit 7 -->
+            <div class="product-card">
+                <img src="images\6f86bce1-b712-4f5b-aeba-50efb6e7f1a9.jpeg" alt="Robe decoltée" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Robes</div>
+                    <div class="product-name">Robe decoltée</div>
+                    <div class="product-price">50 TND</div>
+                     <button onclick="goToCommande('robe manches decoltée', 50, 'images/6f86bce1-b712-4f5b-aeba-50efb6e7f1a9.jpeg')">🛒 Commander</button>
+                
+                </div>
+            </div>
+
+
+            <!-- Produit 8 -->
+            <div class="product-card">
+                <img src="images\delight-dzansi-gA_Hr-eU4J8-unsplash.jpg" alt="robe verte elastique" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Robes</div>
+                    <div class="product-name"> Robe verte elastique</div>
+                    <div class="product-price">35 TND</div>
+                    <button onclick="goToCommande('robe verte elastique', 35, 'images/delight-dzansi-gA_Hr-eU4J8-unsplash.jpg')">🛒 Commander</button>
+                
+                </div>
+            </div>
+
+
+            <!-- Produit 9 -->
+            <div class="product-card">
+                <img src="images\d70f1368-d5c8-46cb-b30a-e1ed97c1904e.jpeg" alt="Robe Bisséfleuri" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Robes</div>
+                    <div class="product-name">Robe Bisséfleuri</div>
+                    <div class="product-price">50 TND</div>
+                  <button onclick="goToCommande('robe bisséfleuri', 50, 'images/d70f1368-d5c8-46cb-b30a-e1ed97c1904e.jpeg')">🛒 Commander</button>
+                
+                </div>
+            </div>
+
+
+            <!-- Produit 10 -->
+            <div class="product-card">
+                <img src="images\❤️❤️❤️🌹.jpeg" alt="Robe bleu large avec poches" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Robes</div>
+                    <div class="product-name"> Robe bleu large avec poches</div>
+                    <div class="product-price">35 TND</div>
+                     <button onclick="goToCommande('robe bleu large avec poches', 35, 'images/❤️❤️❤️🌹.jpeg')">🛒 Commander</button>
+                
+                </div>
+            </div>
+
+
+            <!-- Produit 11 -->
+            <div class="product-card">
+                <img src="images\❤️.jpeg" alt="robe decoltée mopassoula" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Robes</div>
+                    <div class="product-name"> Robe decoltée mopassoula</div>
+                    <div class="product-price">35 TND</div>
+                    <button onclick="goToCommande('robe decoltée mopassoula', 35, 'images/❤️.jpeg')">🛒 Commander</button>
+                
+                </div>
+            </div>
+
+
+            <!-- Produit 12 -->
+            <div class="product-card">
+                <img src="images\téléchargement (69).jpeg" alt="Robe classe" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Robes</div>
+                    <div class="product-name">Robe classe</div>
+                    <div class="product-price">35 TND</div>
+                    <button onclick="goToCommande('robe classe', 35, 'images/téléchargement (69).jpegg')">🛒 Commander</button>
+                
+                </div>
+            </div>
+
+
+            <!-- Produit 13 -->
+            <div class="product-card">
+                <img src="images\African print.jpeg" alt="Robe courte celestone" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Robes</div>
+                    <div class="product-name">Robe courte celestone</div>
+                    <div class="product-price">35 TND</div>
+                     <button onclick="goToCommande('robe courte celestone', 35, 'images/African print.jpeg')">🛒 Commander</button>
+                
+                </div>
+            </div>
+
+
+            <!-- Produit 14 -->
+            <div class="product-card">
+                <img src="images\Robe tendance en pagne.jpeg" alt="Robe singlé tendance" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Robes</div>
+                    <div class="product-name">Robe singlé tendance</div>
+                    <div class="product-price">35 TND</div>
+                   <button onclick="goToCommande('robe singlé celestone', 35, 'images/Robe tendance en pagne.jpeg')">🛒 Commander</button>
+                
+                </div>
+            </div>
+
+
+            <!-- Produit 15-->
+            <div class="product-card">
+                <img src="images\e69eb616-bae5-4719-a927-7a15b4690914.jpeg" alt="Robe declotée poches" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Robes</div>
+                    <div class="product-name">Robe decoltée poches </div>
+                    <div class="product-price">35 TND</div>
+                     <button onclick="goToCommande('robe decoltée poches', 35, 'images/e69eb616-bae5-4719-a927-7a15b4690914.jpeg')">🛒 Commander</button>
+                
+                </div>
+            </div>
+
+
+            <!-- Produit 16-->
+            <div class="product-card">
+                <img src="images\téléchargement (82).jpeg" alt="robe singlé large chic" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Robes</div>
+                    <div class="product-name"> Robe singlé large chic</div>
+                    <div class="product-price">45 TND</div>
+                   <button onclick="goToCommande('robe singlé large chic', 45, 'images/téléchargement (82).jpeg')">🛒 Commander</button>
+                
+                </div>
+            </div>
+
+
+            <!-- Produit 17 -->
+            <div class="product-card">
+                <img src="images\téléchargement (83).jpeg" alt="robe fermeturelarge" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Robes</div>
+                    <div class="product-name">Robe fermetutre large</div>
+                    <div class="product-price">35 TND</div>
+                 <button onclick="goToCommande('robe fermeture large ', 35, 'images/téléchargement (83).jpeg')">🛒 Commander</button>
+                
+                </div>
+            </div>
+
+
+            <!-- Produit 18 -->
+            <div class="product-card">
+                <img src="images\téléchargement (84).jpeg" alt="Robe large a bas transparent" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Robes</div>
+                    <div class="product-name">Robe large a bas transparent</div>
+                    <div class="product-price">45 TND</div>
+                    <button onclick="goToCommande('robe large a bas transparent ', 45, 'images/téléchargement (84).jpeg')">🛒 Commander</button>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        function goToCommande(nom, prix, image) {
+    const url = new URL('commande.html', window.location.origin);
+    url.searchParams.set('nom', nom);
+    url.searchParams.set('prix', prix);
+    url.searchParams.set('image', image);
+    window.location.href = url.toString();
+  }
+
+
+         function mettreAJourCompteurPanier() {
+    const panier = JSON.parse(localStorage.getItem("panier")) || [];
+    const totalQuantite = panier.reduce((total, item) => total + item.quantite, 0);
+    document.getElementById("cartCount").textContent = totalQuantite;
+  }
+
+  // Met à jour dès le chargement de la page
+  window.addEventListener("load", mettreAJourCompteurPanier);
+
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gestion du panier
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productCard = this.closest('.product-card');
+                    const productName = productCard.querySelector('.product-name').textContent;
+                    const productPrice = productCard.querySelector('.product-price').textContent;
+                    
+                    // Animation de feedback
+                    this.textContent = 'Ajouté !';
+                    this.style.backgroundColor = '#27ae60';
+                    
+                    setTimeout(() => {
+                        this.textContent = 'Acheter';
+                        this.style.backgroundColor = '';
+                    }, 2000);
+                    
+                    // Ici vous pourriez ajouter la logique d'ajout au panier
+                    console.log(`Ajout au panier: ${productName} - ${productPrice}`);
+                });
+            });
+            
+            // Vous pourriez ajouter ici:
+            // - Un filtre par catégorie
+            // - Un tri par prix
+            // - Un système de pagination
+        });
+    </script>
+</body>
+</html>

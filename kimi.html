@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+ .avis-section {
+  padding: 80px 20px;
+  background-image: url('https://i.imgur.com/fBr94by.png');
+  background-color: #fffef5;
+  background-size: 180px;
+  background-repeat: repeat;
+}
+
+.avis-container {
+  max-width: 900px;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.94);
+  padding: 50px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(2px);
+}
+
+.avis-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #e65c00;
+  margin-bottom: 40px;
+  font-weight: 700;
+  border-bottom: 4px dashed #f4d35e;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.avis-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+.avis-card {
+  background: #fff9f2;
+  border: 1.5px solid #ffc85c;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.avis-card:hover {
+  transform: translateY(-3px);
+}
+
+.avis-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.avis-avatar {
+  width: 45px;
+  height: 45px;
+  background-color: #f6a500;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.avis-nom {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.avis-stars {
+  font-size: 1rem;
+  color: #ffc107;
+}
+
+.avis-message {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+  margin-top: 5px;
+}
+
+/* Formulaire */
+.avis-form-title {
+  font-size: 1.6rem;
+  color: #227c70;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+#avis-form input,
+#avis-form textarea {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+  border: 1.5px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+#avis-form button {
+  background-color: #e65c00;
+  color: #fff;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#avis-form button:hover {
+  background-color: #c54f00;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .avis-title {
+    font-size: 1.8rem;
+  }
+
+  .avis-avatar {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+  }
+    </style>
+</head>
+
+
+<body>
+    
+
+    <section class="avis-section" id="avis">
+  <div class="avis-container">
+    <h2 class="avis-title">Ils nous font confiance</h2>
+
+    <div class="avis-list" id="avis-list">
+      <div class="avis-card">
+        <div class="avis-header">
+          <div class="avis-avatar">A</div>
+          <div>
+            <strong class="avis-nom">Awa</strong>
+            <div class="avis-stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="avis-message">J’ai adoré la qualité du pagne et le service client était top !</p>
+      </div>
+
+      <div class="avis-card">
+        <div class="avis-header">
+          <div class="avis-avatar">M</div>
+          <div>
+            <strong class="avis-nom">Mamadou</strong>
+            <div class="avis-stars">★★★★☆</div>
+          </div>
+        </div>
+        <p class="avis-message">Livraison rapide et tissu magnifique, je recommande !</p>
+      </div>
+    </div>
+
+    <h3 class="avis-form-title">Laissez votre avis</h3>
+    <form id="avis-form" method="post" action="avis.php">
+      <input type="text" name="nom" placeholder="Votre prénom" required>
+      <textarea name="message" placeholder="Écrivez votre avis..." rows="4" required></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+  </div>
+</section>
+</body>
+</html>

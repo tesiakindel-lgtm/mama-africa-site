@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flash Promo - Boutique</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --promo-color: #e74c3c;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+            --white: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            position: relative;
+        }
+        
+        .page-title {
+            font-size: 28px;
+            text-transform: uppercase;
+            color: var(--promo-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .breadcrumb {
+            font-size: 14px;
+            color: #777;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--promo-color);
+        }
+        
+        .breadcrumb .separator {
+            color: #999;
+        }
+        
+        /* Promo Ribbon */
+        .promo-ribbon {
+            position: absolute;
+            top: 0;
+            right: 20px;
+            background: var(--promo-color);
+            color: white;
+            padding: 5px 15px;
+            font-weight: bold;
+            font-size: 12px;
+            text-transform: uppercase;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 85%, 0 100%);
+        }
+        
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .product-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .product-info {
+            padding: 15px;
+            position: relative;
+        }
+        
+        .product-category {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        
+        .product-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark-gray);
+        }
+        
+        .price-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        
+        .current-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--promo-color);
+        }
+        
+        .old-price {
+            font-size: 14px;
+            text-decoration: line-through;
+            color: #999;
+        }
+        
+        .discount-badge {
+            background: var(--promo-color);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: auto;
+        }
+        
+        .add-to-cart {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .add-to-cart:hover {
+            background-color: var(--promo-color);
+        }
+
+        
+          :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --dark-bg: #1a1a1a;
+            --text-light: #ffffff;
+            --text-gray: #cccccc;
+            --border-color: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        .footer {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            padding: 40px 20px;
+            border-top: 3px solid var(--secondary-color);
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-column {
+            margin-bottom: 20px;
+        }
+        
+        .footer-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--text-light);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+    
+    </style>
+</head>
+   <a href="panier.html" class="cart-icon">
+  🛒 Panier (<span id="cartCount">0</span>)
+ </a>
+<body>
+    <div class="container">
+        <!-- Page Header -->
+        <header class="page-header">
+            <div class="promo-ribbon">Promotion</div>
+            <h1 class="page-title">FLASH PROMO</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Accueil</a>
+                <span class="separator">></span>
+                <span>Flash Promo</span>
+            </div>
+        </header>
+        
+        <!-- Products Grid -->
+        <div class="products-grid">
+            <!-- Produit 1 -->
+            <div class="product-card">
+                <img src="images\téléchargement (41).jpeg" alt="Pull simple" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">PULL</div>
+                    <div class="product-name">Pull simple</div>
+                    <div class="price-container">
+                        <span class="current-price">19.9 TND</span>
+                    </div>
+                    <button onclick="goToCommande('pantalon Taille haute', 19.9, 'images/téléchargement (41).jpeg')">🛒 Commander</button>
+                </div>
+            </div>
+            
+            <!-- Produit 2 -->
+            <div class="product-card">
+                <img src="images\téléchargement (69).jpeg" alt="Robe classe" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Robes</div>
+                    <div class="product-name">Robe classe</div>
+                    <div class="price-container">
+                        <span class="current-price">29.9 TND</span>
+                        <span class="old-price">35 TND</span>
+                        <span class="discount-badge">-14%</span>
+                    </div>
+                    
+                    <button onclick="goToCommande('robe classe', 29.9, 'images/téléchargement (69).jpeg')">🛒 Commander</button>
+                    
+                </div>
+            </div>
+            
+            <!-- Produit 3 -->
+            <div class="product-card">
+                <img src="images\téléchargement (70).jpeg" alt="Pantalon Taille Haute" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Pantalons</div>
+                    <div class="product-name">Pantalon Taille Haute</div>
+                    <div class="price-container">
+                        <span class="current-price">25 TND</span>
+                        <span class="old-price">35 TND</span>
+                        <span class="discount-badge">-29%</span>
+                    </div>
+                    <button onclick="goToCommande('pantalon Taille haute', 35, 'images/téléchargement (70).jpeg')">🛒 Commander</button>
+                
+                </div>
+            </div>
+            
+            <!-- Produit 4 -->
+            <div class="product-card">
+                <img src="images\téléchargement (59).jpeg" alt="Robe fil-large" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">Robes</div>
+                    <div class="product-name">Robe fil-large</div>
+                    <div class="price-container">
+                        <span class="current-price">29.9 TND</span>
+                        <span class="old-price">39 TND</span>
+                        <span class="discount-badge">-23%</span>
+                    </div>
+                    <button onclick="goToCommande('robe fil-large', 39, 'images/téléchargement (59).jpeg')">🛒 Commander</button>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+            <footer class="footer">
+        <div class="footer-container">
+            <!-- Colonne 1 -->
+            <div class="footer-column">
+                <h3 class="footer-title">A propos de nous</h3>
+                <ul class="footer-links">
+                    <li><a href="A propos.html" class="active">A propos</a></li>
+                    <li><a href="politique de confidentialité.html" class="active">Politique de confidentialité</a></li>
+                    <li><a href="FAQ.html" class="active">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <!-- Colonne 2 -->
+            <div class="footer-column">
+                <h3 class="footer-title">Nos services</h3>
+                <ul class="footer-links">
+                    <li><a href="guide des tailles.html" class="active">Guide des tailles</a></li>
+                    <li><a href="service clients.html" class="active">Service clients</a></li>
+                </ul>
+            </div>
+            
+            <!-- Colonne 3 -->
+            <div class="footer-column">
+                <h3 class="footer-title">NOS CATÉGORIES</h3>
+                <ul class="footer-links">
+                    <li><a href="Robes.html" class="active">Robes</a></li>
+                    <li><a href="Emsembles.html" class="active">Ensembles</a></li>
+                    <li><a href="Jupes.html" class="active">Jupes</a></li>
+                    <li><a href="chapeaux1s.html" class="active"> chapeaux</a></li>
+                    <li><a href="Pull.html" class="active">pull</a></li> 
+                    <li><a href="Pantalons.html" class="active">Pantalons</a></li>
+                    <li><a href="sacs et Accesoires.html" class="active"> sac et Accessoires</a></li>
+                </ul>
+            </div>
+            
+            <!-- Colonne 4 -->
+            <div class="footer-column">
+                <h3 class="footer-title">Suivez nous</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/kendall kind" target="-blank" class="social-icon">f</a> <!-- Facebook -->
+                    <a href="https://www.instagram.com/keira_la_dounia"  target="-blank" class="social-icon">i</a> <!-- Instagram -->
+                    <a href="https://www.Twitter.com/Tesia Kindel" target="-blank"" class="social-icon">t</a> <!-- Twitter -->
+                    <a href="https://www.LinkedIn.com/tesia KIM" target="-blank"" class="social-icon">in</a> <!-- LinkedIn -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            © 2024 PRO Store. All rights reserved by Mama-Africa.
+        </div>
+    </footer>     
+
+    <script>
+
+
+
+        function goToCommande(nom, prix, image) {
+    const url = new URL('commande.html', window.location.origin);
+    url.searchParams.set('nom', nom);
+    url.searchParams.set('prix', prix);
+    url.searchParams.set('image', image);
+    window.location.href = url.toString();
+  }
+
+
+         function mettreAJourCompteurPanier() {
+    const panier = JSON.parse(localStorage.getItem("panier")) || [];
+    const totalQuantite = panier.reduce((total, item) => total + item.quantite, 0);
+    document.getElementById("cartCount").textContent = totalQuantite;
+  }
+
+  // Met à jour dès le chargement de la page
+  window.addEventListener("load", mettreAJourCompteurPanier);
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Calcul automatique des pourcentages de réduction
+            document.querySelectorAll('.old-price').forEach(oldPriceEl => {
+                const currentPrice = parseFloat(oldPriceEl.previousElementSibling.textContent);
+                const oldPrice = parseFloat(oldPriceEl.textContent);
+                const discount = Math.round((1 - currentPrice / oldPrice) * 100);
+                
+                if (oldPriceEl.nextElementSibling.classList.contains('discount-badge')) {
+                    oldPriceEl.nextElementSibling.textContent = `-${discount}%`;
+                }
+            });
+            
+            // Gestion du panier (simplifiée)
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productCard = this.closest('.product-card');
+                    const productName = productCard.querySelector('.product-name').textContent;
+                    
+                    // Animation d'ajout au panier
+                    this.textContent = 'Ajouté !';
+                    this.style.backgroundColor = '#2ecc71';
+                    
+                    setTimeout(() => {
+                        this.textContent = 'Acheter';
+                        this.style.backgroundColor = '';
+                    }, 2000);
+                    
+                    console.log(`${productName} ajouté au panier`);
+                    // Ici vous pourriez ajouter la logique réelle d'ajout au panier
+                });
+            });
+        });
+    </script>
+</body>
+</html>

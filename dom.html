@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mama Africa - Header</title>
+  <style>
+    /* Reset et styles globaux */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff;
+    }
+
+    /* Bandeau supérieur */
+    .delivery-banner {
+      background-color: #276243;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 8px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .delivery-banner i {
+      margin-right: 6px;
+    }
+    .social-icons {
+      background-color: #1d3b29;
+      padding: 6px 20px;
+      display: flex;
+      gap: 16px;
+      justify-content: flex-end;
+    }
+    .social-icons a img {
+      width: 30px;
+      height: 30px;
+      
+    }
+    
+
+    /* Header principal */
+    header.main-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 20px 10px 20px;
+      background-color: white;
+      box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+    }
+    .logo {
+      font-family: 'Georgia', serif;
+      font-size: 32px;
+      font-weight: 900;
+      color: #276243;
+      letter-spacing: 2px;
+      user-select: none;
+      cursor: default;
+    }
+
+    .search-bar {
+      flex-grow: 1;
+      margin: 0 30px;
+      max-width: 500px;
+      padding: 10px 16px;
+      border: 2px solid #276243;
+      border-radius: 30px;
+      font-size: 16px;
+      color: #276243;
+      transition: border-color 0.3s ease;
+    }
+    .search-bar:focus {
+      outline: none;
+      border-color: #1d3b29;
+      box-shadow: 0 0 6px #1d3b29aa;
+    }
+
+    .icons {
+      display: flex;
+      gap: 20px;
+      font-weight: 600;
+      align-items: center;
+      color: #276243;
+    }
+    .icons a.nav-item {
+      text-decoration: none;
+      color: #276243;
+      font-weight: 600;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+    .icons a.nav-item:hover {
+      color: #1d3b29;
+    }
+
+    /* Nav menu */
+    .nav-menu {
+      background-color: #276243;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      gap: 20px;
+      font-weight: 600;
+      color: white;
+      user-select: none;
+      font-size: 16px;
+    }
+    .nav-item {
+      color: white;
+      text-decoration: none;
+      position: relative;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    .nav-item:hover,
+    .nav-item:focus {
+      background-color: #1d3b29;
+      outline: none;
+    }
+
+    /* Separator vertical */
+    .separator {
+      color: #99b999;
+      user-select: none;
+    }
+
+    /* Dropdown menu */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-title {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .dropdown-toggle {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      user-select: none;
+      padding: 0;
+      line-height: 1;
+      transition: transform 0.3s ease;
+    }
+    .dropdown-toggle[aria-expanded="true"] {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: white;
+      min-width: 180px;
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      display: none;
+      flex-direction: column;
+      z-index: 1000;
+    }
+    .dropdown-content a {
+      color: #276243;
+      padding: 10px 16px;
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 4px;
+      transition: background-color 0.2s ease;
+    }
+    .dropdown-content a:hover,
+    .dropdown-content a:focus {
+      background-color: #d7eadf;
+      outline: none;
+    }
+    .dropdown.active .dropdown-content {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bandeau supérieur -->
+  <div class="delivery-banner">
+    <div class="delivery-info">
+      <i class="fas fa-truck"></i>
+      Livraison gratuite à partir de 100 TND
+    </div>
+    <div class="contact-info">
+      <i class="fas fa-phone-alt"></i>
+      Tél : 51 467979
+    </div>
+  </div>
+
+  <!-- Réseaux sociaux -->
+  <div class="social-icons">
+    <a href="#" aria-label="Facebook"><img src="images\9366b21c-e6e8-46d0-bb86-7b345833d0dc.jpeg" alt="Facebook"></a>
+    <a href="#" aria-label="WhatsApp"><img src="images\f38156a8-2ad1-4628-af34-155c5c4f864d.jpeg" alt="WhatsApp"></a>
+    <a href="#" aria-label="TikTok"><img src="images\d57e8601-d7d8-4c3c-a7f1-e4a167d6c73e.jpeg" alt="TikTok"></a>
+  </div>
+
+  <!-- Header principal -->
+  <header class="main-header">
+  <div class="logo" style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+  <img src="images\Carte d'Afrique 3D.jpeg" alt="" style="height: 200px; width: auto; object-fit: contain;" />
+  <span style="
+    font-family: 'Algerian';
+    font-weight: 700;
+    font-size: 28px;
+    color: #2E7D32; /* vert stylisé */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    user-select: none;
+  ">Mama Africa</span>
+</div>
+    <input type="text" class="search-bar" placeholder="Rechercher un produit" aria-label="Recherche" />
+    <div class="icons">
+      <a href="connexion.html" class="nav-item" >connexion</a>
+      <a href="panier-vide.html" class="nav-item" aria-label="Panier">🛒</a>
+    </div>
+  </header>
+
+  <!-- Menu de navigation -->
+  <nav class="nav-menu" role="navigation" aria-label="Menu principal">
+    <a href="promotion.html" class="nav-item">Promotion</a>
+    <div class="separator">|</div>
+
+    <div class="nav-item dropdown">
+      <a href="#" class="dropdown-title" tabindex="0">
+        Vêtements
+        <button class="dropdown-toggle" aria-expanded="false" aria-label="Afficher les sous-options">&#9662;</button>
+      </a>
+      <div class="dropdown-content" role="menu" aria-label="Sous-menu vêtements">
+        <a href="robes.html" role="menuitem" tabindex="-1">Robes</a>
+        <a href="ensembles.html" role="menuitem" tabindex="-1">Ensemble & Combi</a>
+        <a href="chemises.html" role="menuitem" tabindex="-1">Chemises & Blous</a>
+        <a href="jupes-pantalons.html" role="menuitem" tabindex="-1">Jupes & Pantalons</a>
+        <a href="jilbab-jebba.html" role="menuitem" tabindex="-1">Jilbab et Jebba</a>
+        <a href="pull.html" role="menuitem" tabindex="-1">PULL</a>
+      </div>
+    </div>
+
+    <div class="separator">|</div>
+    <a href="nouveautes.html" class="nav-item">Nouveautés</a>
+    <div class="separator">|</div>
+    <a href="Nos meilleures ventes.html" class="nav-item">Nos meilleures ventes</a>
+    <div class="separator">|</div>
+    <a href="flash promo.html" class="nav-item">Flash Promo</a>
+    <div class="separator">|</div>
+    <a href="sacs et Accesoires.html" class="nav-item">Sacs et Accessoires</a>
+    <div class="separator">|</div>
+    <a href="chapeaux1s.html" class="nav-item">Chapeaux</a>
+  </nav>
+
+  <script>
+    // Gestion du menu déroulant Vêtements au clic sur la flèche
+    // Gestion du menu déroulant Vêtements au clic sur la flèche
+document.addEventListener('DOMContentLoaded', () => {
+  const dropdown = document.querySelector('.nav-item.dropdown');
+  const toggleBtn = dropdown.querySelector('.dropdown-toggle');
+  const dropdownContent = dropdown.querySelector('.dropdown-content');
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+    toggleBtn.setAttribute('aria-expanded', !expanded);
+    dropdown.classList.toggle('active');
+  });
+
+  // Optionnel : fermer le menu si on clique ailleurs
+  document.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target)) {
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      dropdown.classList.remove('active');
+    }
+  });
+});
+</script>

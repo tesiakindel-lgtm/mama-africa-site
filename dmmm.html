@@ -1,0 +1,477 @@
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection Mode - Showroom.tn</title>
+    <style>
+        body {
+            font-family:'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f8f8;
+        }
+        
+        /* Style pour la grille de produits */
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: #f1f1f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .product-info {
+            padding: 15px;
+        }
+        
+        .product-title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .product-category {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .current-price {
+            font-weight: bold;
+            color: #e67e22;
+            font-size: 18px;
+        }
+        
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+        
+        .cart-icon {
+            width: 30px;
+            height: 30px;
+            background-color: #e67e22;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .cart-icon:hover {
+            background-color: #d35400;
+        }
+        
+        .cart-icon svg {
+            width: 16px;
+            height: 16px;
+            fill: white;
+        }
+        
+        /* Style pour la page de panier (cachée par défaut) */
+        .cart-pagec {
+            display: none;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .cart-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-header h1 {
+            color: #2c3e50;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .cart-item {
+            display: flex;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-image {
+            width: 120px;
+            height: 120px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            margin-right: 20px;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .cart-item-price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #e67e22;
+            margin-bottom: 15px;
+        }
+        
+        .summary-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #fafafa;
+            border-radius: 8px;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .summary-row.total {
+            font-weight: bold;
+            font-size: 18px;
+            border-bottom: none;
+        }
+        
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-continue {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .btn-checkout {
+            background-color: #e67e22;
+            color: white;
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        /* Classe pour afficher la page de panier */
+        .show-cart {
+            display: block;
+        }
+        
+        /* Classe pour cacher la grille de produits */
+        .hide-products {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Grille de produits -->
+    <div id="products-grid" class="products-container">
+        <!-- Produit 1 -->
+        <div class="product-card">
+            <div class="product-image">
+                [Image ROBE DECOLTÉE]
+            </div>
+            <div class="product-info">
+                <div class="product-title">ROBE DECOLTÉE</div>
+                <div class="product-category">Robes</div>
+                <div class="product-price">
+                    <div class="current-price">50 TND</div>
+                    <div class="cart-icon" onclick="showCartPagec('ROBE DECOLTÉE', 50)">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17,18A2,2 0 0,1 19,20A2,2 0 0,1 17,22C15.89,22 15,21.1 15,20C15,18.89 15.89,18 17,18M1,2H4.27L5.21,4H20A1,1 0 0,1 21,5C21,5.17 20.95,5.34 20.88,5.5L17.3,11.97C16.96,12.58 16.3,13 15.55,13H8.1L7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7A2,2 0 0,1 5,15C5,14.65 5.09,14.32 5.24,14.04L6.6,11.59L3,4H1V2M7,18A2,2 0 0,1 9,20A2,2 0 0,1 7,22C5.89,22 5,21.1 5,20C5,18.89 5.89,18 7,18M16,11L18.78,6H6.14L8.5,11H16Z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Produit 2 -->
+        <div class="product-card">
+            <div class="product-image">
+                [Image ROBE DESCENTEFLEURI]
+            </div>
+            <div class="product-info">
+                <div class="product-title">ROBE DESCENTEFLEURI</div>
+                <div class="product-category">Robes</div>
+                <div class="product-price">
+                    <div class="current-price">45 TND</div>
+                    <div class="cart-icon" onclick="showCartPagec('ROBE DESCENTEFLEURI', 45)">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17,18A2,2 0 0,1 19,20A2,2 0 0,1 17,22C15.89,22 15,21.1 15,20C15,18.89 15.89,18 17,18M1,2H4.27L5.21,4H20A1,1 0 0,1 21,5C21,5.17 20.95,5.34 20.88,5.5L17.3,11.97C16.96,12.58 16.3,13 15.55,13H8.1L7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7A2,2 0 0,1 5,15C5,14.65 5.09,14.32 5.24,14.04L6.6,11.59L3,4H1V2M7,18A2,2 0 0,1 9,20A2,2 0 0,1 7,22C5.89,22 5,21.1 5,20C5,18.89 5.89,18 7,18M16,11L18.78,6H6.14L8.5,11H16Z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Produit 3 -->
+        <div class="product-card">
+            <div class="product-image">
+                [Image ROBE BISSÉFLEURI]
+            </div>
+            <div class="product-info">
+                <div class="product-title">ROBE BISSÉFLEURI</div>
+                <div class="product-category">Robes</div>
+                <div class="product-price">
+                    <div class="current-price">50 TND</div>
+                    <div class="cart-icon" onclick="showCartPagec('ROBE BISSÉFLEURI', 50)">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17,18A2,2 0 0,1 19,20A2,2 0 0,1 17,22C15.89,22 15,21.1 15,20C15,18.89 15.89,18 17,18M1,2H4.27L5.21,4H20A1,1 0 0,1 21,5C21,5.17 20.95,5.34 20.88,5.5L17.3,11.97C16.96,12.58 16.3,13 15.55,13H8.1L7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7A2,2 0 0,1 5,15C5,14.65 5.09,14.32 5.24,14.04L6.6,11.59L3,4H1V2M7,18A2,2 0 0,1 9,20A2,2 0 0,1 7,22C5.89,22 5,21.1 5,20C5,18.89 5.89,18 7,18M16,11L18.78,6H6.14L8.5,11H16Z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Produit 4 -->
+        <div class="product-card">
+            <div class="product-image">
+                [Image ENSEMBLE PANTALOPARDESSUS]
+            </div>
+            <div class="product-info">
+                <div class="product-title">ENSEMBLE PANTALOPARDESSUS</div>
+                <div class="product-category">Ensembles</div>
+                <div class="product-price">
+                    <div>
+                        <span class="current-price">29.9 TND</span>
+                        <span class="old-price">50 TND</span>
+                    </div>
+                    <div class="cart-icon" onclick="showCartPagec('ENSEMBLE PANTALOPARDESSUS', 29.9)">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17,18A2,2 0 0,1 19,20A2,2 0 0,1 17,22C15.89,22 15,21.1 15,20C15,18.89 15.89,18 17,18M1,2H4.27L5.21,4H20A1,1 0 0,1 21,5C21,5.17 20.95,5.34 20.88,5.5L17.3,11.97C16.96,12.58 16.3,13 15.55,13H8.1L7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7A2,2 0 0,1 5,15C5,14.65 5.09,14.32 5.24,14.04L6.6,11.59L3,4H1V2M7,18A2,2 0 0,1 9,20A2,2 0 0,1 7,22C5.89,22 5,21.1 5,20C5,18.89 5.89,18 7,18M16,11L18.78,6H6.14L8.5,11H16Z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Produit 5 -->
+        <div class="product-card">
+            <div class="product-image">
+                [Image ENSEMBLE VESTE]
+            </div>
+            <div class="product-info">
+                <div class="product-title">ENSEMBLE VESTE</div>
+                <div class="product-category">Ensembles</div>
+                <div class="product-price">
+                    <div>
+                        <span class="current-price">49.9 TND</span>
+                        <span class="old-price">70 TND</span>
+                    </div>
+                    <div class="cart-icon" onclick="showCartPagec('ENSEMBLE VESTE', 49.9)">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17,18A2,2 0 0,1 19,20A2,2 0 0,1 17,22C15.89,22 15,21.1 15,20C15,18.89 15.89,18 17,18M1,2H4.27L5.21,4H20A1,1 0 0,1 21,5C21,5.17 20.95,5.34 20.88,5.5L17.3,11.97C16.96,12.58 16.3,13 15.55,13H8.1L7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7A2,2 0 0,1 5,15C5,14.65 5.09,14.32 5.24,14.04L6.6,11.59L3,4H1V2M7,18A2,2 0 0,1 9,20A2,2 0 0,1 7,22C5.89,22 5,21.1 5,20C5,18.89 5.89,18 7,18M16,11L18.78,6H6.14L8.5,11H16Z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Produit 6 -->
+        <div class="product-card">
+            <div class="product-image">
+                [Image PANTALON TAILLE HAUTE]
+            </div>
+            <div class="product-info">
+                <div class="product-title">PANTALON TAILLE HAUTE</div>
+                <div class="product-category">Pantalons & jupes</div>
+                <div class="product-price">
+                    <div>
+                        <span class="current-price">25 TND</span>
+                        <span class="old-price">35 TND</span>
+                    </div>
+                    <div class="cart-icon" onclick="showCartPagec('PANTALON TAILLE HAUTE', 25)">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17,18A2,2 0 0,1 19,20A2,2 0 0,1 17,22C15.89,22 15,21.1 15,20C15,18.89 15.89,18 17,18M1,2H4.27L5.21,4H20A1,1 0 0,1 21,5C21,5.17 20.95,5.34 20.88,5.5L17.3,11.97C16.96,12.58 16.3,13 15.55,13H8.1L7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7A2,2 0 0,1 5,15C5,14.65 5.09,14.32 5.24,14.04L6.6,11.59L3,4H1V2M7,18A2,2 0 0,1 9,20A2,2 0 0,1 7,22C5.89,22 5,21.1 5,20C5,18.89 5.89,18 7,18M16,11L18.78,6H6.14L8.5,11H16Z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Produit 7 -->
+        <div class="product-card">
+            <div class="product-image">
+                [Image ROBE VERTE ELASTIQUE]
+            </div>
+            <div class="product-info">
+                <div class="product-title">ROBE VERTE ELASTIQUE</div>
+                <div class="product-category">Robes</div>
+                <div class="product-price">
+                    <div>
+                        <span class="current-price">35 TND</span>
+                        <span class="old-price">40 TND</span>
+                    </div>
+                    <div class="cart-icon" onclick="showCartPagec('ROBE VERTE ELASTIQUE', 35)">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17,18A2,2 0 0,1 19,20A2,2 0 0,1 17,22C15.89,22 15,21.1 15,20C15,18.89 15.89,18 17,18M1,2H4.27L5.21,4H20A1,1 0 0,1 21,5C21,5.17 20.95,5.34 20.88,5.5L17.3,11.97C16.96,12.58 16.3,13 15.55,13H8.1L7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7A2,2 0 0,1 5,15C5,14.65 5.09,14.32 5.24,14.04L6.6,11.59L3,4H1V2M7,18A2,2 0 0,1 9,20A2,2 0 0,1 7,22C5.89,22 5,21.1 5,20C5,18.89 5.89,18 7,18M16,11L18.78,6H6.14L8.5,11H16Z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Produit 8 -->
+        <div class="product-card">
+            <div class="product-image">
+                [Image ROBE SINGLÉ MITCHOTCHA]
+            </div>
+            <div class="product-info">
+                <div class="product-title">ROBE SINGLÉ MITCHOTCHA</div>
+                <div class="product-category">Robes</div>
+                <div class="product-price">
+                    <div>
+                        <span class="current-price">35 TND</span>
+                        <span class="old-price">40 TND</span>
+                    </div>
+                    <div class="cart-icon" onclick="showCartPagec('ROBE SINGLÉ MITCHOTCHA', 35)">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17,18A2,2 0 0,1 19,20A2,2 0 0,1 17,22C15.89,22 15,21.1 15,20C15,18.89 15.89,18 17,18M1,2H4.27L5.21,4H20A1,1 0 0,1 21,5C21,5.17 20.95,5.34 20.88,5.5L17.3,11.97C16.96,12.58 16.3,13 15.55,13H8.1L7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7A2,2 0 0,1 5,15C5,14.65 5.09,14.32 5.24,14.04L6.6,11.59L3,4H1V2M7,18A2,2 0 0,1 9,20A2,2 0 0,1 7,22C5.89,22 5,21.1 5,20C5,18.89 5.89,18 7,18M16,11L18.78,6H6.14L8.5,11H16Z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page de panier (cachée initialement) -->
+    <div id="cart-page" class="cart-page">
+        <div class="cart-header">
+            <h1>Votre Panier</h1>
+            <p>Il y a 1 article dans votre panier</p>
+        </div>
+        
+        <div class="cart-item">
+            <div class="cart-item-image">
+                [Image du produit]
+            </div>
+            <div class="cart-item-details">
+                <h2 id="cart-product-title" class="cart-item-title">Mawlety Crème Coiffante pour Cheveux Bouclés 300ml</h2>
+                <div id="cart-product-price" class="cart-item-price">42,000 TND</div>
+                <div class="product-quantity">Quantité : 1</div>
+            </div>
+        </div>
+        
+        <div class="summary-section">
+            <div class="summary-row">
+                <span>Sous-total :</span>
+                <span id="cart-subtotal">42,000 TND</span>
+            </div>
+            <div class="summary-row">
+                <span>Transport :</span>
+                <span>gratuit</span>
+            </div>
+            <div class="summary-row total">
+                <span>Total TTC :</span>
+                <span id="cart-total">42,000 TND</span>
+            </div>
+        </div>
+        
+        <div class="button-group">
+            <button class="btn btn-continue" onclick="hideCartPage()">CONTINUER MES ACHATS</button>
+            <button class="btn btn-checkout">COMMANDER</button>
+        </div>
+    </div>
+
+    <script>
+
+      
+   function showCartPagec(productName, productPrice) {
+    // On encode les paramètres pour les passer dans l'URL
+    const url = panier.html?name=${encodeURIComponent(productName)}&price=${encodeURIComponent(productPrice)};
+    window.location.href = url;
+   }
+
+        // Fonction pour afficher la page de panier avec le produit sélectionné
+        function showCartPagec(productName, price) {
+            // Mettre à jour les informations du panier
+            document.getElementById('cart-product-title').textContent = productName;
+            document.getElementById('cart-product-price').textContent = price + ' TND';
+            document.getElementById('cart-subtotal').textContent = price + ' TND';
+            document.getElementById('cart-total').textContent = price + ' TND';
+            
+            // Masquer la grille de produits
+            document.getElementById('products-grid').classList.add('hide-products');
+            
+            // Afficher la page de panier
+            document.getElementById('cart-page').classList.add('show-cart');
+            
+            // Faire défiler vers le haut de la page de panier
+            window.scrollTo(0, 0);
+        }
+        
+        // Fonction pour masquer la page de panier et revenir aux produits
+        function hideCartPage() {
+            // Afficher la grille de produits
+            document.getElementById('products-grid').classList.remove('hide-products');
+            
+            // Masquer la page de panier
+            document.getElementById('cart-page').classList.remove('show-cart');
+            
+            // Faire défiler vers le haut de la page
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
